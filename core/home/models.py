@@ -14,5 +14,9 @@ class Student(models.Model):
     def __str__(self):
         return f"{self.name} (Age: {self.age}, Email: {self.email})"
 
-class Product(models.Model):
-    pass 
+class Car(models.Model):
+    car_name = models.CharField(max_length=100)
+    speed = models.IntegerField(default=60)
+
+    def __str__(self):
+        return f"{self.car_name} (speed : {self.speed})"

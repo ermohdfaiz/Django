@@ -11,5 +11,8 @@ class Student(models.Model):
     image = models.ImageField()
     file = models.FileField()
 
+    def __str__(self):
+        return f"{self.name} (Age: {self.age}, Email: {self.email})"
+
 class Product(models.Model):
     pass 

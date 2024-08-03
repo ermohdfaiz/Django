@@ -17,6 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from home.views import *
+from vege.views import *
+
+from django.conf.urls.static import static
+from django.conf import settings
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +29,15 @@ urlpatterns = [
     path('practice/', practice, name="practice-page"),
     path('contacts/', contacts, name="contacts-page"),
     path('about/', about, name="about-page"),
-    path('success-page/', success_page, name="success-page")
+    path('success-page/', success_page, name="success-page"),
+
+    path('recipes/', recipes, name="recipes_page"), 
+    path('delete_recipe/<id>/', delete_recipe, name="delete_recipe_page"),
+    path('update_recipe/<id>/', update_recipe, name="update_recipe_page")
+    
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+
+urlpatterns += staticfiles_urlpatterns()
